@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'mysql'
 
 group :development do
 	gem 'better_errors'
