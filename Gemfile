@@ -22,9 +22,10 @@ gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'better_errors'
 
 group :development do
-	gem 'better_errors'
+	
 end
 
 group :production do
