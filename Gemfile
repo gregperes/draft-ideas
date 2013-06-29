@@ -25,7 +25,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'better_errors'
 
 group :development do
-	
 end
 
 group :production do
