@@ -3,6 +3,7 @@ class Draft < ActiveRecord::Base
 
   validates :title, presence: true, length: 5..100
   validates :description, presence: true, length: 5..500
+  validates :tags, length: { maximum: 80 }
   validates :user, presence: true
   
   def mark_as_archived

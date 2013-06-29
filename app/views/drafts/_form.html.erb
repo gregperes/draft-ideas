@@ -9,14 +9,15 @@
       </ul>
     </div>
   <% end %>
-  <%= f.input :title, label: "Título" %>
-  <%= f.input :description, label: "Descrição" %>
-  <%= f.input :tags, label: "Tags" %>
+  <%= f.input :title, label: "Título", input_html: { class: "span6", maxlength: 100 } %>
+  <%= f.input :description, label: "Descrição", input_html: { class: "span6", rows: "10" } %>
+  <%= f.input :tags, label: "Tags", input_html: { class: "span4", maxlength: 80 } %>
   <div class="control-group">
-    <label class="control-label" for="">Usu&aacute;rio</label>
+    <label class="control-label" for="">Criado por</label>
     <div class="controls">
-      <span><%= current_user.login %></span>
+      <p class="text-info"><%= current_user.login %></p>
     </div>
   </div>
-  <%= f.submit 'Save', class: "btn btn-primary" %>
+  <%= f.submit "Salvar", class: "btn btn-primary" %>
+	<%= link_to "Voltar", drafts_path, class: "btn" %>
 <% end %>
