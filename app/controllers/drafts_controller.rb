@@ -1,4 +1,5 @@
 class DraftsController < ApplicationController
+  respond_to :html
   before_action :set_draft, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,36 +19,26 @@ class DraftsController < ApplicationController
   def create
     @draft = Draft.new(draft_params)
     @draft.user = current_user
-
-    respond_to do |format|
-      if @draft.save
-        format.html { redirect_to drafts_path, notice: 'Draft was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @draft }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @draft.errors, status: :unprocessable_entity }
-      end
+    
+    if @draft.save
+      respond_with @draft
+    else
+      render action: "new"
     end
   end
 
   def update
-    respond_to do |format|
-      if @draft.update(draft_params)
-        format.html { redirect_to drafts_path, notice: 'Draft was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @draft.errors, status: :unprocessable_entity }
-      end
+    if @draft.update(draft_params)
+      redirect_to drafts_path, notice: 'Draft was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
   def destroy
-    @draft.destroy
-    respond_to do |format|
-      format.html { redirect_to drafts_url }
-      format.json { head :no_content }
-    end
+    @draft.mark_as_archived
+    @draft.save
+    redirect_to drafts_url 
   end
 
   private

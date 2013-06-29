@@ -1,33 +1,22 @@
-<h1>Listing drafts</h1>
+<h1>Lista de Rascunho de Id&eacute;ias</h1>
+<br>
+<%= link_to "Novo rascunho", new_draft_path, class: "btn btn-primary" %>
+<br><br>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
+      <th>T&iacute;tulo</th>
       <th>Tags</th>
-      <th>User</th>
-      <th>Archived</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Criado por</th>
     </tr>
   </thead>
   <tbody>
     <% @drafts.each do |draft| %>
       <tr>
-        <td><%= draft.title %></td>
-        <td><%= draft.description %></td>
+        <td><%= link_to draft.title, draft %></td>
         <td><%= draft.tags %></td>
         <td><%= draft.user.name %></td>
-        <td><%= draft.archived %></td>
-        <td><%= link_to 'Show', draft %></td>
-        <td><%= link_to 'Edit', edit_draft_path(draft) %></td>
-        <td><%= link_to 'Destroy', draft, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Draft', new_draft_path %>

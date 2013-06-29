@@ -1,29 +1,19 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @draft.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @draft.description %>
-</p>
-
+<h2><%= @draft.title %></h2>
+<p class="lead"><%= @draft.description %></p>
 <p>
   <strong>Tags:</strong>
-  <%= @draft.tags %>
+	<% @draft.tags.split(",").each do |item| %>
+		<span class="label label-info"><%= item %></span>
+	<% end %>
 </p>
-
 <p>
-  <strong>User:</strong>
-  <%= @draft.user %>
+  <strong>Criado por:</strong>
+  <%= @draft.user.name %>
 </p>
-
 <p>
-  <strong>Archived:</strong>
+  <strong>Arquivado:</strong>
   <%= @draft.archived %>
 </p>
-
-<%= link_to 'Edit', edit_draft_path(@draft) %> |
-<%= link_to 'Back', drafts_path %>
+<%= link_to "Editar", edit_draft_path(@draft), class: "btn btn-primary" %>
+<%= link_to "Voltar", drafts_path, class: "btn" %>

@@ -4,4 +4,12 @@ class Draft < ActiveRecord::Base
   validates :title, presence: true, length: 5..100
   validates :description, presence: true, length: 5..500
   validates :user, presence: true
+  
+  def mark_as_archived
+    self.archived = true
+  end
+  
+  def unmark_as_archived
+    self.archived = false
+  end
 end
