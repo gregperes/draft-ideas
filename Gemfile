@@ -28,6 +28,7 @@ group :development do
 end
 
 group :production do
+  gem 'mysql'
 end
 
 group :doc do
