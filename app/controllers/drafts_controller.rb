@@ -3,7 +3,7 @@ class DraftsController < ApplicationController
   before_action :set_draft, only: [:show, :edit, :update, :destroy]
 
   def index
-    @drafts = Draft.all
+    @drafts = Draft.where(:archived => false)
   end
 
   def show
@@ -36,7 +36,12 @@ class DraftsController < ApplicationController
   end
 
   def destroy
-    @draft.mark_as_archived
+    if @draft.archived 
+      @draft.unmark_as_archived
+    else
+      @draft.mark_as_archived
+    end
+    
     @draft.save
     redirect_to drafts_url 
   end
