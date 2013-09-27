@@ -19,7 +19,8 @@ class DraftsController < ApplicationController
   def create
     @draft = Draft.new(draft_params)
     @draft.user = current_user
-    
+    @draft.unmark_as_archived
+
     if @draft.save
       respond_with @draft
     else
@@ -36,14 +37,14 @@ class DraftsController < ApplicationController
   end
 
   def destroy
-    if @draft.archived 
+    if @draft.archived
       @draft.unmark_as_archived
     else
       @draft.mark_as_archived
     end
-    
+
     @draft.save
-    redirect_to drafts_url 
+    redirect_to drafts_url
   end
 
   private
