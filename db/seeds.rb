@@ -9,3 +9,10 @@ User.create(name: "Marcos Zimermann",
                   login: "marcosz",
                   password: "123456",
                   password_confirmation: "123456") unless User.find_by_login("marcosz").present?
+
+User.create(name: "Wagner Parmezao",
+                  email: "wagner@parmex.com.br",
+                  login: "wagner",
+                  password: "123456",
+                  password_confirmation: "123456") unless User.find_by_login("wagner").present?
+
